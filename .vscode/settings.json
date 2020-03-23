@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}/config/database.yml",
+            "dialect": "SQLite",
+            "name": "sumple"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
