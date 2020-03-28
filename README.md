@@ -24,20 +24,29 @@ Things you may want to cover:
 # sqlite3→PostgreSQLテーブル or データ移行
 ### 1.sqlite3からdumpファイルをエクスポート
   ##### sqliteに接続
-  ```ターミナル
+  ```
   rails db
   ```
   ##### dumpファイルの出力先を指定
-  ``` .out ./dumpfile.sql ```
+  ```
+  .out ./dumpfile.sql
+  ```
   ##### dumpファイルの作成（コマンド ＋ テーブル名）
-  ``` .dump users ```
+  ```
+  .dump users
+  ```
   ##### sqlite終了
-  ``` .exit ```
+  ```
+  .exit
+  ```
 ### 2.dumpファイル編集（※ここにテーブル作成文とかレコード作成文が記載されている）
   ##### PostgreSQL用の文に書き換える
-  ``` integer primary key ```　→　``` serial primary key ```
+  ``` integer primary key ```　→　``` serial primary key ```　
+
   ``` datetime ```　→　``` timestamp```
   ※順次追加予定
 ### 3.PostgreSQLにdumpファイルをインポート
   ##### 本番環境にテーブル or レコードを作成　
-  ``` heroku pg:psql -a　persons-dev < dumpfile.sql ```
+  ```
+  heroku pg:psql -a　persons-dev < dumpfile.sql
+  ```
