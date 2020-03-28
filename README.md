@@ -41,10 +41,9 @@ Things you may want to cover:
   ```
 ### 2.dumpファイル編集（※ここにテーブル作成文とかレコード作成文が記載されている）
   ##### PostgreSQL用の文に書き換える
-
-  ` integer primary key `　→　` serial primary key `　
-
-  ` datetime `　→　` timestamp`
+  |変更前|変更後|備考|
+  |` integer primary key `|` serial primary key `|ID|　
+  |` datetime `|` timestamp`|日付時間|
 
   ※順次追加予定
 ### 3.PostgreSQLにdumpファイルをインポート
