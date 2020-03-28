@@ -24,7 +24,9 @@ Things you may want to cover:
 # sqlite3→PostgreSQLテーブル or データ移行
 ### 1.sqlite3からdumpファイルをエクスポート
   ##### sqliteに接続
-  ``` rails db ```
+  ```ターミナル
+  rails db
+  ```
   ##### dumpファイルの出力先を指定
   ``` .out ./dumpfile.sql ```
   ##### dumpファイルの作成（コマンド ＋ テーブル名）
