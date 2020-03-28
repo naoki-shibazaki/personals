@@ -40,7 +40,8 @@ Things you may want to cover:
   .exit
   `
 ### 2.dumpファイル編集（※ここにテーブル作成文とかレコード作成文が記載されている）
-  - PostgreSQL用の文に書き換える
+  ##### PostgreSQL用の文に書き換える
+  
   ` integer primary key `　→　` serial primary key `　
 
   ` datetime `　→　` timestamp`
