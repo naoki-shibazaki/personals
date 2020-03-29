@@ -9,11 +9,11 @@ ruby-2.6.3
 
 # Database creation
 
-# Database initialization
-
-# How to run the test suite
-
-# Services (job queues, cache servers, search engines, etc.)
+# Database
+  ### 開発
+  sqlite3
+  ### 本番
+  PosgreSQL
 
 # VScode 拡張
   [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools)
