@@ -7,8 +7,6 @@ ruby-2.6.3
 
 # Configuration
 
-# Database creation
-
 # Database
   ### 開発
   sqlite3
