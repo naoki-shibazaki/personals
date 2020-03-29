@@ -1,4 +1,10 @@
 {
-    "sqltools.connections": [],
+    "sqltools.connections": [
+        {
+            "connectString": "postgres://oajkwzyjdwxguk:0ba7dc8beb75acfca5dcaab8cfe5816f11e3a0259493944df4567783675741ec@ec2-52-23-14-156.compute-1.amazonaws.com:5432/dcnu4nd9avbnis?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
+            "dialect": "PostgreSQL",
+            "name": "persons-dev"
+        }
+    ],
     "sqltools.useNodeRuntime": true
 }
