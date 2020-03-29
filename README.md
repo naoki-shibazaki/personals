@@ -16,10 +16,7 @@ ruby-2.6.3
 # Services (job queues, cache servers, search engines, etc.)
 
 # VScode 拡張
-### SQLTools
-  ##### DB接続用
-
-  [リンク](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools)
+  [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools){:target="_blank"}
 
 # sqlite3→PostgreSQLテーブル or データ移行
 ### 1.sqlite3からdumpファイルをエクスポート
