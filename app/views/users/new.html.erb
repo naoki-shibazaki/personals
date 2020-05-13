@@ -1,0 +1,20 @@
+<h2>★★★★★ユーザ登録画面★★★★★</h2>
+<%= render partial: 'layouts/flash' %>
+
+<%= form_for(@user_create) do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <%= f.submit %>
+  <% end %>

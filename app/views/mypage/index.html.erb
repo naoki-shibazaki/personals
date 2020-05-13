@@ -1,0 +1,6 @@
+<h2>★★★★★まいぺーじ★★★★★</h2>
+<% if logged_in? %>
+  <%= render 'mypage/logged_in' %>
+<% else %>
+  <%= render 'mypage/not_logged_in' %>
+<% end %>
