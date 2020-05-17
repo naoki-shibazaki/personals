@@ -1,0 +1,29 @@
+<h2>★★★★★関係人物登録画面★★★★★</h2>
+<%= link_to "人物登録", new_person_path %>
+<%= search_form_for @q, url: person_search_path do |f| %>
+    <%= f.text_field :keywords,
+        required: false,
+        value: params.dig(:q, :keywords),
+        placeholder: 'キーワード'
+    %>
+ <% end %>
+
+<% if @people.present? %>
+    <table class="table table-hover">
+        <tbody>
+        <tr>
+            <th>氏</th>
+            <th>名</th>
+        </tr>
+        <% @people.each do |p| %>
+            <tr>
+                <td><%= p.last_name %></td>
+                <td><%= p.first_name %></td>
+                <td><%= link_to "[参照]", person_path(p) %></td>
+                <td><%= link_to "[編集]", edit_person_path(p) %></td>
+                <td><%= link_to "[x]", person_path(p), method: :delete, data: {confirm: '削除しますか？'} %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+  <% end %>

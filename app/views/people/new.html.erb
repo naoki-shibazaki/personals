@@ -1,0 +1,15 @@
+<h2>★★★★★関係人物登録画面★★★★★</h2>
+<%= render partial: 'layouts/flash' %>
+<%= form_for(@person) do |f| %>
+  <div class="field">
+    <%= f.label :last_name, "氏" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name, "名" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <%= f.submit "作成" %>
+<% end %>

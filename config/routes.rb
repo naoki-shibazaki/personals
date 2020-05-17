@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   
+  # ユーザ
   resources :users
-  resources :mypage
+  # マイページ
+  resources :mypages
+  # 関係人物
+  resources :people
+  get '/person/search', to:'people#search'
+  post '/person/search', to:'people#search'
   
 end

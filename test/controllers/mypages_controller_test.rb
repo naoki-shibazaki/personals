@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class MypageControllerTest < ActionDispatch::IntegrationTest
+class MypagesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get mypage_new_url
+    get mypages_new_url
     assert_response :success
   end
 
