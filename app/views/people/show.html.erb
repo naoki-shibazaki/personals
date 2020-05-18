@@ -1,3 +1,40 @@
 <h2>★★★★★関係人物参照画面★★★★★</h2>
-氏：<%= @person.last_name%>
-名：<%= @person.first_name %>
+<p>氏：<%= @person.last_name%></p>
+<p>名：<%= @person.first_name %></p>
+
+<h3>★★★★★関係人物詳細★★★★★</h3>
+
+<% if @person.person_details.any? %>
+  <table>
+    <tbody>
+      <tr>
+        <th>カテゴリ</th>
+        <th>内容</th>
+      </tr>
+          
+      <% @person.person_details.each do |detail| %>
+        <tr>
+          <td><%= detail.category %></td>
+          <td><%= simple_format detail.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+<h3>★★★★★詳細登録★★★★★</h3>
+<%= render partial: 'layouts/flash' %>
+<%= form_with(model: [@person, @detail], local: true) do |f| %>
+  <div class="field">
+    <%= f.label :category, "カテゴリ" %>
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "内容" %>
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.submit "作成" %>
+<% end %>

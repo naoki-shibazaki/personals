@@ -1,4 +1,7 @@
 class Person < ApplicationRecord
+    # 紐付け
+    has_many :person_details
+
     # バリデーション
     validates :first_name, presence: true
     validates :last_name, presence: true

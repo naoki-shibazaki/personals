@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   # マイページ
   resources :mypages
   # 関係人物
-  resources :people
+  resources :people do
+    # 関係事物詳細
+    resources :person_details
+  end
   get '/person/search', to:'people#search'
   post '/person/search', to:'people#search'
   

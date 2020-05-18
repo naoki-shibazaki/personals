@@ -18,9 +18,11 @@ class PeopleController < ApplicationController
         end
     end
 
-    # 編集画面
+    # 参照画面
     def show
         @person = Person.find(params[:id])
+        @details = @person.person_details
+        @detail = @person.person_details.build
     end
 
     # 編集画面
@@ -60,6 +62,6 @@ class PeopleController < ApplicationController
     private
 
     def person_params
-    params.require(:person).permit(:last_name, :first_name)
+        params.require(:person).permit(person_detail[:last_name], person_detail[:first_name])
     end
 end
