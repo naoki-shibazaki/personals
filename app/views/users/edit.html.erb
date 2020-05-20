@@ -1,12 +1,7 @@
-<h2>★★★★★ユーザ登録画面★★★★★</h2>
+<h2>★★★★★ユーザ情報修正画面★★★★★</h2>
 <%= render partial: 'layouts/flash' %>
 
-<%= form_for(@user) do |f| %>
-  <div class="field">
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email %>
-  </div>
-
+<%= form_for @user, url: user_path(@user) do |f| %>
   <div class="field">
     <%= f.label :password, 'パスワード' %>
     <%= f.password_field :password %>
@@ -16,5 +11,7 @@
     <%= f.label :password_confirmation, 'パスワード確認用' %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <%= f.submit %>
-  <% end %>
+  <%= f.submit "更新" %>
+<% end %>
+
+<%= link_to "ユーザ削除", user_path(@user), method: :delete, data: {confirm: '削除しますか？'} %>

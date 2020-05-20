@@ -1,6 +1,6 @@
 class Person < ApplicationRecord
     # 紐付け
-    has_many :person_details
+    has_many :person_details, dependent: :destroy
 
     # バリデーション
     validates :first_name, presence: true

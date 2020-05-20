@@ -21,8 +21,6 @@ class PeopleController < ApplicationController
     # 参照画面
     def show
         @person = Person.find(params[:id])
-        @details = @person.person_details
-        @detail = @person.person_details.build
     end
 
     # 編集画面

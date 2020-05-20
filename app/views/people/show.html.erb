@@ -10,12 +10,14 @@
       <tr>
         <th>カテゴリ</th>
         <th>内容</th>
+        <th>削除</th>
       </tr>
           
       <% @person.person_details.each do |detail| %>
         <tr>
           <td><%= detail.category %></td>
           <td><%= simple_format detail.content %></td>
+          <td><%= link_to "[x]", person_person_detail_path(@person, detail), method: :delete, data: {confirm: '削除しますか？'} %></td>
         </tr>
       <% end %>
     </tbody>
@@ -25,10 +27,11 @@
 
 <h3>★★★★★詳細登録★★★★★</h3>
 <%= render partial: 'layouts/flash' %>
-<%= form_with(model: [@person, @detail], local: true) do |f| %>
+<%= form_for([@person, @person.person_details.build]) do |f| %>
   <div class="field">
     <%= f.label :category, "カテゴリ" %>
     <%= f.text_field :category %>
+
   </div>
 
   <div class="field">
