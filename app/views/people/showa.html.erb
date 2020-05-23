@@ -1,8 +1,9 @@
-<h2>★★★★★関係人物参照画面★★★★★</h2>
+<%= render partial: 'layouts/flash' %>
+<h2>★★★関係人物参照画面★★★</h2>
 <p>氏：<%= @person.last_name%></p>
 <p>名：<%= @person.first_name %></p>
 
-<h3>★★★★★関係人物詳細★★★★★</h3>
+<h3>★★★関係人物詳細★★★</h3>
 
 <% if @person.person_details.any? %>
   <table>
@@ -25,7 +26,7 @@
 <% end %>
 
 
-<h3>★★★★★詳細登録★★★★★</h3>
+<h3>★★★詳細登録★★★</h3>
 <%= render partial: 'layouts/flash' %>
 <%= form_for([@person, @person.person_details.build]) do |f| %>
   <div class="field">

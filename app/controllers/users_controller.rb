@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    logger.debug('★')
+    logger.debug(params)
+    if params[:bugs_user]
+      @user = User.new
+    else
+      redirect_to root_url
+    end
   end
   def create
     @user = User.new(user_params)
@@ -8,7 +14,7 @@ class UsersController < ApplicationController
       flash[:success] = '登録が完了しました'
       redirect_to root_url
     else
-      flash.now[:alert] = 'なにかがダメでした'
+      flash.now[:danger] = 'なにかがダメでした'
       render :new
     end
   end
@@ -28,7 +34,7 @@ class UsersController < ApplicationController
         # ログイン画面へ遷移
         redirect_to root_url
     else
-        flash.now[:alert] = 'なにかがダメでした'
+        flash.now[:danger] = 'なにかがダメでした'
         render :edit
     end
   end

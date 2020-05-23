@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to mypages_path
     else
-      flash.now[:alert] = 'ちがうよ'
+      flash.now[:danger] = 'ちがうよ'
       render 'new'
     end
   end

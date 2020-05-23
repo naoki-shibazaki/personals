@@ -1,17 +1,41 @@
-<h2>★★★★★ユーザ情報修正画面★★★★★</h2>
 <%= render partial: 'layouts/flash' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="text-center py-5">
+        <h4 class="common-page-title">
+        ★★★UserEdit★★★
+        </h3>
+      </div>
 
-<%= form_for @user, url: user_path(@user) do |f| %>
-  <div class="field">
-    <%= f.label :password, 'パスワード' %>
-    <%= f.password_field :password %>
+      <%= form_for @user, url: user_path(@user) do |f| %>
+        <div class="form-group">
+          <%= f.password_field :password,
+              class: 'form-control',
+              placeholder:'Password'
+          %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password_confirmation,
+              class: 'form-control',
+              placeholder:'Password Confirmation'
+          %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Update", :class => 'btn btn-primary btn-lg btn-block' %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= link_to "User Delete", 
+            user_path(@user), 
+            method: :delete, 
+            data: {confirm: '削除しますか？'},
+            :class => 'btn btn-outline-danger btn-lg btn-block'
+        %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, 'パスワード確認用' %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <%= f.submit "更新" %>
-<% end %>
-
-<%= link_to "ユーザ削除", user_path(@user), method: :delete, data: {confirm: '削除しますか？'} %>
+</div>

@@ -1,0 +1,21 @@
+.common-page-title{
+  position: relative;
+  display: inline-block;
+  padding-bottom:0.5em;
+  border-bottom: 1px solid black;
+  &::before, &::after {
+    position: absolute;
+     top: 100%;
+     left:50%;
+     transform:translateX(-50%);
+     content: '';
+     border: 10px solid transparent;
+  }
+  &::before{
+    border-top: 10px solid black;
+  }
+  &::after{
+    margin-top: -1px;
+    border-top: 10px solid white;
+  }
+}

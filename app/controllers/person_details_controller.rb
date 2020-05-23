@@ -6,11 +6,20 @@ class PersonDetailsController < ApplicationController
         pd = @person.person_details.new(details_params)
         pd.user_id = current_user.id
         if pd.save
-            flash[:success] = "とうろくしました"
+            modal_params = {
+                modal_type: 'show',
+                modal_no: params[:person_id]
+            }
+            respond_to do |format| 
+                format.html { 
+                    redirect_to person_search_url(modal_params)
+                }
+                format.js {  flash[:success] = '登録完了' }
+            end
         else
-            flash[:success] = "とうろくしっぱい"
+            person_search_url
         end
-        redirect_to person_path(@person)
+        
     end
 
     # 削除
@@ -18,7 +27,13 @@ class PersonDetailsController < ApplicationController
         @person = Person.find(params[:person_id])
         @detail = @person.person_details.find(params[:id])
         @detail.destroy
-        redirect_to person_path(@person)
+        modal_params = {
+            modal_type: 'show',
+            modal_no: params[:person_id]
+        }
+        respond_to do |format| 
+            format.html { redirect_to person_search_url(modal_params) }
+        end
     end
 
     private

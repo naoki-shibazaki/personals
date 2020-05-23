@@ -1,15 +1,20 @@
-<h2>★★★★★関係人物登録画面★★★★★</h2>
 <%= render partial: 'layouts/flash' %>
+<div class="text-center py-5">
+  <h4 class="common-page-title">
+  ★★★関係人物登録画面★★★
+  </h3>
+</div>
+
 <%= form_for(@person) do |f| %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :last_name, "氏" %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :class => 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :first_name, "名" %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :class => 'form-control' %>
   </div>
 
-  <%= f.submit "作成" %>
+  <%= f.submit "作成", :class => 'btn btn-primary btn-lg btn-block' %>
 <% end %>
