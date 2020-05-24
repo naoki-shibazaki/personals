@@ -1,0 +1,34 @@
+.modal-dialog.modal-xl{:role => "document"}
+  .modal-content
+    .modal-header
+      %h5#exampleModalLabel.modal-title
+        %i.fas.fa-user-cog.fa-2x.mr-3.text-primary
+        = @person.last_name
+        = @person.first_name
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+    .modal-body
+      - if @person.person_details.any?
+        .row
+          - @person.person_details.each do |detail|
+            .col-lg-4.col-md-12.mb-3
+              .card.border-primary.h-100
+                .clearfix
+                  = link_to "×",                                |
+                    person_person_detail_path(@person, detail), |
+                    method: :delete,                            |
+                    data: {confirm: '削除しますか？'},                 |
+                    class: 'close float-right mt-2 mr-3'        |
+                .card-body.text-center
+                  %h5.card-title= detail.category
+                  %p.card-text= simple_format detail.content
+        %hr/
+      = form_for([@person, @person.person_details.build]) do |f|
+        .form-group
+          = f.label :category, "カテゴリ"
+          = f.text_field :category, class: 'form-control'
+        .form-group
+          = f.label :content, "内容"
+          = f.text_area :content, rows: 4, class: 'form-control'
+        .modal-footer.actions
+          = f.submit "作成", class: "btn btn-outline-primary w-75 m-auto"
