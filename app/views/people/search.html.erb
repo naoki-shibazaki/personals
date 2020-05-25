@@ -1,0 +1,93 @@
+<div id="search">
+  <%= render partial: 'layouts/flash' %>
+  <div class="container">
+    <div class="text-center py-5">
+      <h4 class="common-page-title">
+      ★★★Seach★★★
+      </h4>
+    </div>
+    <div class="form-group">
+    <%= search_form_for @q, url: person_search_path do |f| %>
+      <%= f.text_field :keywords,
+          required: false,
+          value: params.dig(:q, :keywords),
+          placeholder: 'Keyword',
+          class: 'form-control'
+      %>
+    <% end %>
+    </div>
+
+    <% if @people.present? %>
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">LastName</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">Buttons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @people.each.with_index(1) do |p, i| %>
+            <tr>
+              <td scope="row"><%= i %></td>
+              <td><%= p.last_name %></td>
+              <td><%= p.first_name %></td>
+              <td class="p-2">
+                <div class="container">
+                  <div class="row">
+                    <%= link_to "Show", 
+                        person_path(p),
+                        remote: true,
+                        id:"show-#{p.id}",
+                        class: 'btn btn-outline-dark btn-sm col-md-3 ' %>
+                    <%= link_to "Edit", edit_person_path(p), remote: true, class: 'btn btn-outline-dark btn-sm col-md-3 offset-md-1 my-2 my-md-0' %>
+                    <%= link_to "Delete",
+                        person_path(p),
+                        method: :delete,
+                        data: {confirm: '削除しますか？'},
+                        class: 'btn btn-outline-dark btn-sm col-md-3 offset-md-1'
+                    %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <% #編集画面モーダル %>
+      <div class="modal fade" 
+          id="person-edit-modal" 
+          tabindex="-1" 
+          role="dialog" 
+          aria-labelledby="exampleModalLabel" 
+          aria-hidden="true">
+      </div>
+
+      <% #参照画面モーダル %>
+      <div class="modal fade" 
+          id="person-show-modal" 
+          tabindex="-1" 
+          role="dialog" 
+          aria-labelledby="exampleModalLabel" 
+          aria-hidden="true">
+      </div>
+    <% end %>
+
+    <% # 詳細情報登録、削除時のモーダル発火%>
+    <% if @modal_params.present? %>
+      <script>
+      <% @modal_params.each do |key, value| %>
+        $('a#<%=key%>-<%=value%>')[0].click();
+      <% end %>
+      </script>  
+    <% end %>
+
+    <% # 登録ボタン（＋）%>
+    <%= link_to "", new_person_path, remote: true, class: 'btn btn-outline-dark new-fixed-btn' %>
+  </div><!-- #container -->
+</div>
+
+
+
