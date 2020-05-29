@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>" role="alert">
-      <%= value %>
-    </div>
+  <script>
+    UIkit.notification("<div class='uk-text-center uk-alert-success'><%= value %></div>");
+  </script>
 <% end %>

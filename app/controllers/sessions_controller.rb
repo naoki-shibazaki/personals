@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to mypages_path
     else
-      flash.now[:danger] = 'ちがうよ'
-      render 'new'
+      flash[:danger] = get_err_msg
+      redirect_to root_url
     end
   end
 

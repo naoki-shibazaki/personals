@@ -1,21 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <ul class="nav navbar-nav mr-auto">
+<div uk-sticky="sel-target: .uk-section-secondary; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+  <nav class="uk-section-secondary" uk-navbar style="position: relative; z-index: 980;">
+    <div class="uk-navbar-left">
       <% if logged_in? %>
-        <%= link_to "LOGO", mypages_path, class: 'navbar-brand' %>
-        <span class="navbar-text">
-        XxXxXxXxXxX
-        </span>
+        <%= link_to "LOGO", mypages_path, class: 'uk-navbar-item uk-logo' %>
       <% else %>
-        <%= link_to "LOGO", root_path, class: 'navbar-brand' %>
+        <%= link_to "LOGO", root_path, class: 'uk-navbar-item uk-logo' %>
       <% end %>
-    </ul>
-
+    </div>
     <% if logged_in? %>
-      <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <%= link_to "Log out", logout_path, method: :delete, class: 'nav-link'%>
-        </li>
-      </ul>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        </ul>
+      </div>
     <% end %>
-    
   </nav>
+</div>

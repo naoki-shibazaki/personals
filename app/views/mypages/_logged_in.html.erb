@@ -1,101 +1,43 @@
-<div class="text-center py-5">
-  <h4 class="common-page-title">
-  ★★★MYPAGE★★★
-  </h3>
-</div>
-<div class="container">
-  <div class="row">
+<div id="mypage">
+  <div id="test-easing" class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex" style="background-image: url('/assets/mypage_bg.jpg');" uk-height-viewport>
+    <div class="uk-grid uk-margin-auto uk-margin-auto-vertical uk-flex-inline">
 
-    <div class="col-md-4 mb-4 mb-md-5">
-      <div class="card text-center border-dark">
-        <div class="my-auto">
-          <div class="card-body w-75 mx-auto my-auto">
-            <i class="fas fa-search fa-4x mb-3"></i>
-            <h5 class="card-title">
-              <%= link_to "Search",
-                  person_search_path,
-                  class: 'text-dark stretched-link'
-              %>
-            </h5>
+      <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
+        <%= link_to(person_search_path, class: 'uk-display-block uk-link-reset') do %>
+          <div class="uk-card uk-card-body uk-overlay-primary uk-text-center">
+            <i class="fas fa-search fa-4x uk-margin-top"></i>
+            <p class="uk-h4">search</p>
+          </div>
+        <% end %>
+
+
+        <%= link_to(edit_user_path(current_user.id), class: 'uk-display-block uk-link-reset') do %>
+          <div class="uk-card uk-card-body uk-card-body uk-overlay-primary uk-text-center">
+            <i class="fas fa-cogs fa-4x uk-margin-top"></i>
+            <p class="uk-h4">Setting</p>
+          </div>
+        <% end %>  
+
+        <div class="uk-display-block uk-link-reset">
+          <div class="uk-card uk-card-body uk-overlay-primary uk-text-center">
+            <i class="fas fa-question-circle fa-4x uk-margin-top"></i>
+            <p class="uk-h4">
+                高度情報通信
+            </p>
+          </div>
+        </div>
+
+        <div class="uk-display-block uk-link-reset">
+          <div class="uk-card uk-card-body uk-overlay-primary uk-text-center">
+            <i class="fas fa-question-circle fa-4x uk-margin-top"></i>
+            <p class="uk-h4">
+                ××××××××××
+            </p>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 mb-4 mb-md-5">
-      <div class="card text-center border-dark">
-        <div class="my-auto">
-          <div class="card-body w-75 mx-auto my-auto">
-            <i class="fas fa-cogs fa-4x mb-3"></i>
-            <h5 class="card-title">
-              x[Setting]
-            </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4 mb-md-5">
-      <div class="card text-center border-dark">
-        <div class="my-auto">
-          <div class="card-body w-75 mx-auto my-auto">
-            <i class="fas fa-key fa-4x mb-3"></i>
-            <h5 class="card-title">
-              <%= link_to "Password Reset",
-                  edit_user_path(current_user.id),
-                  class: 'text-dark stretched-link'
-              %>
-            </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4 mb-md-5">
-      <div class="card text-center border-dark">
-        <div class="my-auto">
-          <div class="card-body w-75 mx-auto my-auto">
-            <i class="fas fa-question-circle fa-4x mb-3"></i>
-            <h5 class="card-title">
-              ××××××××××
-            </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4 mb-md-5">
-      <div class="card text-center border-dark">
-        <div class="my-auto">
-          <div class="card-body w-75 mx-auto my-auto">
-            <i class="fas fa-question-circle fa-4x mb-3"></i>
-            <h5 class="card-title">
-              ××××××××××
-            </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4 mb-md-5">
-      <div class="card text-center border-dark">
-        <div class="my-auto">
-          <div class="card-body w-75 mx-auto my-auto">
-            <i class="fas fa-question-circle fa-4x mb-3"></i>
-            <h5 class="card-title">
-              ××××××××××
-            </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
-    
-
-
 </div>
-    
-            
 
 

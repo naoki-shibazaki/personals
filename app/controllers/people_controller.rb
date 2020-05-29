@@ -13,13 +13,19 @@ class PeopleController < ApplicationController
     def create
         @person = Person.new(person_params)
         if @person.save
-            respond_to do |format|
-                format.html { redirect_to @person }
-                format.js {  flash[:success] = '登録完了'}
-                redirect_to person_search_url
+            modal_params = {
+                modal_type: 'new',
+                modal_no: '0'
+            }
+            respond_to do |format| 
+                format.html { 
+                    redirect_to @person
+                }
+                format.js {  flash[:success] = '登録完了<br/>いえい∠( `°∀°)／' }
+                redirect_to person_search_url(modal_params)
             end
         else
-            flash.now[:danger] = 'なにかがダメでした'
+            flash.now[:danger] = get_err_msg
             render :new
         end
     end
@@ -46,13 +52,19 @@ class PeopleController < ApplicationController
     def update
         @person = Person.find(params[:id])
         if @person.update(person_params)
-            respond_to do |format|
-                format.html { redirect_to @person }
-                format.js {  flash[:success] = '更新完了'}
-                redirect_to person_search_url
+            modal_params = {
+                modal_type: 'new',
+                modal_no: '0'
+            }
+            respond_to do |format| 
+                format.html { 
+                    redirect_to @person
+                }
+                format.js {  flash[:warning] = '更新完了' }
+                redirect_to person_search_url(modal_params)
             end
         else
-            flash.now[:danger] = 'なにかがダメでした'
+            flash.now[:danger] = get_err_msg
             render :edit
         end
     end
@@ -76,6 +88,7 @@ class PeopleController < ApplicationController
     def destroy
         @people = Person.find(params[:id])
         @people.destroy
+        flash[:danger] = get_err_msg
         redirect_to person_search_path
     end
 
