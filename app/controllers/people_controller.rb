@@ -33,6 +33,7 @@ class PeopleController < ApplicationController
     # 参照画面
     def show
         @person = Person.find(params[:id])
+        get_random_images
         respond_to do |format| 
             format.html{ redirect_to @person, notice: 'User was successfully created.' }
             format.js {} 

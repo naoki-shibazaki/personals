@@ -1,3 +1,5 @@
+
+
 <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
   <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
   <h2 class="uk-heading-line uk-text-right uk-padding">
@@ -12,7 +14,11 @@
             style="background-color:<%= postit_color.shuffle[0] %>">
           <div class="uk-card-media-<%= i.even? ? 'left' : 'right uk-flex-last@s' %>
                       uk-cover-container">
-            <img src="<%= asset_path(get_random_images) %>" alt="" uk-cover>
+            <% if Rails.env == 'development' %>
+              <img src="<%= asset_path('modal_imgs/' + @images.shuffle[0]) %>" alt="" uk-cover>
+            <% else %>
+              <img src="<%= asset_path(@images.shuffle[0]) %>" alt="" uk-cover>
+            <% end %>
             <canvas width="600" height="200"></canvas>
           </div>
           <div class="uk-position-top-<%= i.even? ? 'right' : 'left' %> uk-overlay">

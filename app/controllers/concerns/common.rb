@@ -39,7 +39,7 @@ module Common
 
   # 画像ランダム表示
   def get_random_images
-    images = %w(
+    @images = %w(
       godafoss.jpg
       coffee.jpg
       music-sheet.jpg
@@ -76,12 +76,5 @@ module Common
       rainbow.jpg
       kawa.jpg
     )
-    if Rails.env == 'development'
-      image_path = 'modal_imgs/' + images.shuffle[0]
-    else
-      image_path = images.shuffle[0]
-    end
-
-    return image_path
   end
 end
