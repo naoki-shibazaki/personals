@@ -1,9 +1,9 @@
 <% #images取得 %>
 <% img_arr = [] %>
 <% if Rails.env == 'development' %>
-  <% img_path = "#{Rails.root}/app/assets/images/modal_imgs/*" %>
+  <% img_path = "#{Rails.root}/app/assets/images/modal_imgs/*jpg" %>
 <% else %>
-  <% img_path = "#{Rails.root}/assets/*jpg"  %>
+  <% img_path = "#{Rails.root}/assets/*.jpg"  %>
 <% end %>
 <% Dir.glob("#{img_path}") do |f| %>
   <% img_arr.push(File.basename(f)) %>
@@ -12,8 +12,6 @@
   <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
   <h2 class="uk-heading-line uk-text-right uk-padding">
     <span><%= @person.last_name %><%= @person.first_name %></span>
-    <%=  arr %>
-    <%=  sss %>
   </h2>
   <% if @person.person_details.any? %>
     <% @person.person_details.each_with_index do |detail, i| %>
