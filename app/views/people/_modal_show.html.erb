@@ -1,15 +1,3 @@
-<% #images取得 %>
-<% img_arr = [] %>
-<% if Rails.env == 'development' %>
-  <% img_path = "#{Rails.root}/app/assets/images/modal_imgs/*jpg" %>
-  <% img_url = "/assets/modal_imgs/" %>
-<% else %>
-  <% img_path = "#{Rails.root}/assets/*.jpg"  %>
-  <% img_url = "/assets/" %>
-<% end %>
-<% Dir.glob("#{img_path}") do |f| %>
-  <% img_arr.push(File.basename(f)) %>
-<% end %>
 <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
   <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
   <h2 class="uk-heading-line uk-text-right uk-padding">
@@ -24,7 +12,7 @@
             style="background-color:<%= postit_color.shuffle[0] %>">
           <div class="uk-card-media-<%= i.even? ? 'left' : 'right uk-flex-last@s' %>
                       uk-cover-container">
-            <img src="<%= img_url + img_arr.shuffle[0] %>" alt="" uk-cover>
+            <img src="<%= asset_path(get_random_images) %>" alt="" uk-cover>
             <canvas width="600" height="200"></canvas>
           </div>
           <div class="uk-position-top-<%= i.even? ? 'right' : 'left' %> uk-overlay">

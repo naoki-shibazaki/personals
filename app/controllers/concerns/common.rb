@@ -5,6 +5,7 @@ module Common
     # 作ったメソッドここに追加
     helper_method :get_random_err_msg
     helper_method :postit_color
+    helper_method :get_random_images
   end
   
   # ##### メソッドを定義 #####
@@ -34,5 +35,53 @@ module Common
       (｀；ω；´)ぴえん
     )
     msg_arr.shuffle[0]
+  end
+
+  # 画像ランダム表示
+  def get_random_images
+    images = %w(
+      godafoss.jpg
+      coffee.jpg
+      music-sheet.jpg
+      travel.jpg
+      cuba.jpg
+      town.jpg
+      hana1.jpg
+      blond.jpg
+      road.jpg
+      cat2.jpg
+      hati.jpg
+      aurora.jpg
+      cat4.jpg
+      polynesia.jpg
+      cat5.jpg
+      passport.jpg
+      pancake.jpg
+      keybord.jpg
+      sea.jpg
+      barley.jpg
+      yukiyamagoya.jpg
+      mountain.jpg
+      castelmezzano.jpg
+      tree.jpg
+      iceberg.jpg
+      nature.jpg
+      sora.jpg
+      salad.jpg
+      globe-trotter.jpg
+      clock.jpg
+      platter.jpg
+      tree2.jpg
+      hedgehog.jpg
+      rainbow.jpg
+      kawa.jpg
+    )
+    if Rails.env == 'development'
+      image_path = 'modal_imgs/' + images.shuffle[0]
+    else
+      image_path = images.shuffle[0]
+    end
+
+    return image_path
   end
 end
