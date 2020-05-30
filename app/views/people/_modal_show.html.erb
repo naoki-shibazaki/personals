@@ -14,11 +14,9 @@
             style="background-color:<%= postit_color.shuffle[0] %>">
           <div class="uk-card-media-<%= i.even? ? 'left' : 'right uk-flex-last@s' %>
                       uk-cover-container">
-            <% if Rails.env == 'development' %>
+            
               <img src="<%= asset_path('modal_imgs/' + @images.shuffle[0]) %>" alt="" uk-cover>
-            <% else %>
-              <img src="<%= asset_path(@images.shuffle[0]) %>" alt="" uk-cover>
-            <% end %>
+            
             <canvas width="600" height="200"></canvas>
           </div>
           <div class="uk-position-top-<%= i.even? ? 'right' : 'left' %> uk-overlay">

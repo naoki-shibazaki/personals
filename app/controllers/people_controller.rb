@@ -35,7 +35,7 @@ class PeopleController < ApplicationController
         @person = Person.find(params[:id])
         get_random_images
         respond_to do |format| 
-            format.html{ redirect_to @person, notice: 'User was successfully created.' }
+            format.html{ redirect_to @person }
             format.js {} 
         end
     end
@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
     def edit
         @person = Person.find(params[:id])
         respond_to do |format| 
-            format.html{ redirect_to @person, notice: 'User was successfully created.' }
+            format.html{ redirect_to @person }
             format.js {} 
         end
     end
