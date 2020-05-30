@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       flash[:success] = '登録が完了しました'
       redirect_to root_url
     else
-      flash.now[:danger] = 'なにかがダメでした'
+      flash.now[:danger] = get_random_err_msg
       render :new
     end
   end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         # ログイン画面へ遷移
         redirect_to root_url
     else
-        flash.now[:danger] = 'なにかがダメでした'
+        flash.now[:danger] = get_random_err_msg
         render :edit
     end
   end

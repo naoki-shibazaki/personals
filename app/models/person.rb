@@ -1,6 +1,6 @@
 class Person < ApplicationRecord
     # 紐付け
-    has_many :person_details, dependent: :destroy
+    has_many :person_details,-> { order("created_at DESC") }, dependent: :destroy
 
     # バリデーション
     validates :first_name, presence: true

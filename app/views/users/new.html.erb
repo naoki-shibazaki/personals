@@ -1,36 +1,37 @@
-<%= render partial: 'layouts/flash' %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="text-center py-5">
-          <h4 class="common-page-title">
-          ★★★UserCreate★★★
-          </h3>
-        </div>
+<div id="users">
+  <div id="new">
+    <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-background-blend-lighten bk-img-color" data-src="/assets/user_create.jpg" uk-img uk-height-viewport>
+      <div class="uk-overlay uk-overlay-primary uk-position-center bugs-padding">
+        <div class="uk-text-center">
+          <i class="fas fa-id-card fa-4x mb-3"></i>
+          <h2>UserCreate</h2>
+          <p>Information is a WeaponPON!!!</p>
 
-      <%= form_for(@user) do |f| %>
-        <div class="form-group">
-          <%= f.text_field :email,
-              class: 'form-control',
-              placeholder:'Email Address'
-          %>
-        </div>
+          <%= render partial: 'layouts/flash' %>
+          <%= form_for(@user) do |f| %>
+            <div class="uk-margin">
+              <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                <%= f.email_field :email, class: 'uk-input', placeholder:'Email Address' %>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <%= f.password_field :password,
-              class: 'form-control',
-              placeholder:'Password'
-          %>
-        </div>
+            <div class="uk-margin">
+              <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                <%= f.password_field :password, class: 'uk-input', placeholder:'Password' %>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <%= f.password_field :password_confirmation,
-              class: 'form-control',
-              placeholder:'Password Confirmation'
-          %>
+            <div class="uk-margin">
+              <%= f.submit "Register", class: 'uk-button uk-button-default' %>
+            </div>
+          <% end %>
         </div>
-        <%= f.submit 'Register', :class => 'btn btn-primary btn-lg btn-block' %>
-      <% end %>
+        
+      </div>
+        
     </div>
   </div>
+  
 </div>

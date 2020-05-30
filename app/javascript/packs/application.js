@@ -16,6 +16,10 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import jquery from 'jquery';
 window.$ = window.jquery = jquery;
-import 'bootstrap'
 import '@fortawesome/fontawesome-free/js/all'
 import '../src/application.scss'
+
+import UIkit from 'uikit';
+window.UIkit = UIkit;
+import Icons from 'uikit/dist/js/uikit-icons';
+UIkit.use(Icons);

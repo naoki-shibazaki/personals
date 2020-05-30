@@ -13,13 +13,19 @@ class PeopleController < ApplicationController
     def create
         @person = Person.new(person_params)
         if @person.save
-            respond_to do |format|
-                format.html { redirect_to @person }
-                format.js {  flash[:success] = '登録完了'}
-                redirect_to person_search_url
+            modal_params = {
+                modal_type: 'new',
+                modal_no: '0'
+            }
+            respond_to do |format| 
+                format.html { 
+                    redirect_to @person
+                }
+                format.js {  flash[:success] = '登録完了' }
+                redirect_to person_search_url(modal_params)
             end
         else
-            flash.now[:danger] = 'なにかがダメでした'
+            flash.now[:danger] = get_random_err_msg
             render :new
         end
     end
@@ -46,13 +52,19 @@ class PeopleController < ApplicationController
     def update
         @person = Person.find(params[:id])
         if @person.update(person_params)
-            respond_to do |format|
-                format.html { redirect_to @person }
-                format.js {  flash[:success] = '更新完了'}
-                redirect_to person_search_url
+            modal_params = {
+                modal_type: 'new',
+                modal_no: '0'
+            }
+            respond_to do |format| 
+                format.html { 
+                    redirect_to @person
+                }
+                format.js {  flash[:warning] = '更新完了' }
+                redirect_to person_search_url(modal_params)
             end
         else
-            flash.now[:danger] = 'なにかがダメでした'
+            flash.now[:danger] = get_random_err_msg
             render :edit
         end
     end
@@ -66,9 +78,9 @@ class PeopleController < ApplicationController
             }
         end
         if params[:q].present?
-            @people = @q.result
+            @people = @q.result.order(updated_at: "ASC")
         else
-            @people = Person.all
+            @people = Person.all.order(updated_at: "ASC")
         end
     end
 
@@ -76,6 +88,7 @@ class PeopleController < ApplicationController
     def destroy
         @people = Person.find(params[:id])
         @people.destroy
+        flash[:danger] = 'さくじょすますた'
         redirect_to person_search_path
     end
 

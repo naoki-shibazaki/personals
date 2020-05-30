@@ -1,60 +1,69 @@
-<div class="modal-dialog modal-xl" role="document">
-  <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            <i class="fas fa-user-cog fa-2x mr-3 text-primary"></i>
-            <%= @person.last_name %><%= @person.first_name %>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
+<% #images取得 %>
+<% img_arr = [] %>
+<% Dir.glob("#{Rails.root}/app/assets/images/modal_imgs/*") do |f| %>
+  <% img_arr.push(File.basename(f)) %>
+<% end %>
+<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+  <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+  <h2 class="uk-heading-line uk-text-right uk-padding">
+    <span><%= @person.last_name %><%= @person.first_name %></span>
+  </h2>
+  <% if @person.person_details.any? %>
+    <% @person.person_details.each_with_index do |detail, i| %>
+        
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s bugs-modal_show-boder
+            uk-margin uk-animation-slide-bottom" uk-grid
+            uk-scrollspy="cls: uk-animation-slide-<%= i.even? ? 'right' : 'left' %>;"
+            style="background-color:<%= postit_color.shuffle[0] %>">
+          <div class="uk-card-media-<%= i.even? ? 'left' : 'right uk-flex-last@s' %>
+                      uk-cover-container">
+            <img src="/assets/modal_imgs/<%= img_arr.shuffle[0] %>" alt="" uk-cover>
+            <canvas width="600" height="200"></canvas>
+          </div>
+          <div class="uk-position-top-<%= i.even? ? 'right' : 'left' %> uk-overlay">
+            
+            <%= link_to(person_person_detail_path(@person, detail),
+                method: :delete, data: {confirm: '削除しますか？'}, 
+                class: 'uk-position-small uk-position-top-right uk-text-danger') do %>
+              <span uk-icon="icon:close; ratio: 1">
+            <% end %>
+          </div>
+          
+          <div class="bugs-modal_show-padding">
+            <article class="uk-article">
+              <p class="uk-h3 uk-text-light"><%= detail.category %></p>
+              <div class="uk-h5">
+                <%= simple_format(detail.content) %>
+              </div>
+              
+              <p class="uk-text-right  uk-text-meta">
+                <%= detail.updated_at.strftime("%Y/%m/%d") %>
+              </p>
+            </article>  
+            
+          </div>
+          
         </div>
 
-        <div class="modal-body">
-          <% if @person.person_details.any? %>
-            <div class="row">
-              <% @person.person_details.each do |detail| %>
-                <div class="col-lg-4 col-md-12 mb-3">
-                  <div class="card border-primary h-100">
-                    <div class="clearfix">
-                      <%= link_to "×",
-                          person_person_detail_path(@person, detail),
-                          method: :delete,
-                          data: {confirm: '削除しますか？'},
-                          class: 'close float-right mt-2 mr-3'
-                      %>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title"><%= detail.category %></h5>
-                      <p class="card-text"><%= simple_format detail.content %></p>
-                    </div>
-                  </div>
-                </div>
-                
-              <% end %>
-            </div>
-            <hr>
-          <% end %>
-
-          <%= form_for([@person, @person.person_details.build]) do |f| %>
-            <div class="form-group">
-              <%= f.label :category, "カテゴリ" %>
-              <%= f.text_field :category, class: 'form-control' %>
-
-            </div>
-
-            <div class="form-group">
-              <%= f.label :content, "内容" %>
-              <%= f.text_area :content, rows: 4, class: 'form-control' %>
-            </div>
-
-            <div class="modal-footer actions">
-              <%= f.submit "作成", class: "btn btn-outline-primary w-75 m-auto"%>
-            </div>
-          <% end %>
+    <% end %>
+  <% end %>
+  <%= form_for([@person, @person.person_details.build]) do |f| %>
+    <div class="uk-margin">
+        <%= f.label :category, "カテゴリ", class: 'uk-form-label' %>
+        <div class="uk-form-controls">
+            <%= f.text_field :category, class: 'uk-input' %>
         </div>
+    </div>
 
+    <div class="uk-margin">
+      <%= f.label :content, "内容", class: 'uk-form-label' %>
+        <div class="uk-form-controls">
+          <%= f.text_area :content, rows: 4, class: 'uk-textarea' %>
+        </div>
+    </div>
 
-  </div>
+    <div class="modal-footer actions">
+      <%= f.submit "作成", class: "uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" %>
+    </div>
+  <% end %>
 </div>

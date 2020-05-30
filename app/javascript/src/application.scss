@@ -1,3 +1,9 @@
-@import '~bootstrap/scss/bootstrap';
+
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+@import "uikit/src/scss/uikit-theme.scss";
 @import 'common.scss';
 @import 'people.scss';
+@import 'sessions.scss';
+@import 'mypage.scss';
+@import 'users.scss';
