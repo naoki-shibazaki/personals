@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-
+    include PeopleHelper
     # 登録画面
     def new
         @person = Person.new
