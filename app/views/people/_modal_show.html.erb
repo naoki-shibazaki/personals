@@ -11,12 +11,10 @@
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s bugs-modal_show-boder
             uk-margin uk-animation-slide-bottom" uk-grid
             uk-scrollspy="cls: uk-animation-slide-<%= i.even? ? 'right' : 'left' %>;"
-            style="background-color:<%= postit_color.shuffle[0] %>">
+            style="background-color:<%= get_postit_color.shuffle[0] %>">
           <div class="uk-card-media-<%= i.even? ? 'left' : 'right uk-flex-last@s' %>
                       uk-cover-container">
-            
               <img src="<%= asset_path('modal_imgs/' + @images.shuffle[0]) %>" alt="" uk-cover>
-            
             <canvas width="600" height="200"></canvas>
           </div>
           <div class="uk-position-top-<%= i.even? ? 'right' : 'left' %> uk-overlay">
