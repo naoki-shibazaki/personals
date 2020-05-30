@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to mypages_path
     else
-      flash[:danger] = get_err_msg
+      flash[:danger] = get_random_err_msg
       redirect_to root_url
     end
   end

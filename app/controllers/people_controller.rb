@@ -21,11 +21,11 @@ class PeopleController < ApplicationController
                 format.html { 
                     redirect_to @person
                 }
-                format.js {  flash[:success] = '登録完了<br/>いえい∠( `°∀°)／' }
+                format.js {  flash[:success] = '登録完了' }
                 redirect_to person_search_url(modal_params)
             end
         else
-            flash.now[:danger] = get_err_msg
+            flash.now[:danger] = get_random_err_msg
             render :new
         end
     end
@@ -64,7 +64,7 @@ class PeopleController < ApplicationController
                 redirect_to person_search_url(modal_params)
             end
         else
-            flash.now[:danger] = get_err_msg
+            flash.now[:danger] = get_random_err_msg
             render :edit
         end
     end
@@ -78,9 +78,9 @@ class PeopleController < ApplicationController
             }
         end
         if params[:q].present?
-            @people = @q.result
+            @people = @q.result.order(updated_at: "ASC")
         else
-            @people = Person.all
+            @people = Person.all.order(updated_at: "ASC")
         end
     end
 
@@ -88,7 +88,7 @@ class PeopleController < ApplicationController
     def destroy
         @people = Person.find(params[:id])
         @people.destroy
-        flash[:danger] = get_err_msg
+        flash[:danger] = 'さくじょすますた'
         redirect_to person_search_path
     end
 

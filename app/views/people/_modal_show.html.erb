@@ -3,23 +3,22 @@
 <% Dir.glob("#{Rails.root}/app/assets/images/modal_imgs/*") do |f| %>
   <% img_arr.push(File.basename(f)) %>
 <% end %>
-
 <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
   <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
   <h2 class="uk-heading-line uk-text-right uk-padding">
     <span><%= @person.last_name %><%= @person.first_name %></span>
   </h2>
-  
   <% if @person.person_details.any? %>
     <% @person.person_details.each_with_index do |detail, i| %>
         
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s bugs-modal_show-boder
             uk-margin uk-animation-slide-bottom" uk-grid
-            uk-scrollspy="cls: uk-animation-slide-<%= i.even? ? 'right' : 'left' %>;">
+            uk-scrollspy="cls: uk-animation-slide-<%= i.even? ? 'right' : 'left' %>;"
+            style="background-color:<%= postit_color.shuffle[0] %>">
           <div class="uk-card-media-<%= i.even? ? 'left' : 'right uk-flex-last@s' %>
                       uk-cover-container">
             <img src="/assets/modal_imgs/<%= img_arr.shuffle[0] %>" alt="" uk-cover>
-            <canvas width="600" height="100"></canvas>
+            <canvas width="600" height="200"></canvas>
           </div>
           <div class="uk-position-top-<%= i.even? ? 'right' : 'left' %> uk-overlay">
             
@@ -28,13 +27,22 @@
                 class: 'uk-position-small uk-position-top-right uk-text-danger') do %>
               <span uk-icon="icon:close; ratio: 1">
             <% end %>
-            </span>
           </div>
-          <div class="uk-card-body">
+          
+          <div class="bugs-modal_show-padding">
+            <article class="uk-article">
+              <p class="uk-h3 uk-text-light"><%= detail.category %></p>
+              <div class="uk-h5">
+                <%= simple_format(detail.content) %>
+              </div>
+              
+              <p class="uk-text-right  uk-text-meta">
+                <%= detail.updated_at.strftime("%Y/%m/%d") %>
+              </p>
+            </article>  
             
-            <h3 class="uk-card-title"><%= detail.category %></h3>
-            <p><%= simple_format detail.content %></p>
           </div>
+          
         </div>
 
     <% end %>
