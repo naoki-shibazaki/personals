@@ -15,7 +15,7 @@ module PeopleHelper
   def get_random_images
     @images = []
     # 回数は「assets/images/modal_imgs」配下のファイル数
-    35.times do |i|
+    40.times do |i|
       @images.push('img' + i.to_s)
     end
   end
